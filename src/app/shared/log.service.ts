@@ -54,4 +54,10 @@ export class LogService {
   fatal(message: string, ...optionalParams: any[]) {
     this.writeToLog(message, LogLevel.Fatal, optionalParams);
   }
+
+  clear(): void {
+    for (const logger of this.publishers) {
+      logger.clear();
+    }
+  }
 }

@@ -12,4 +12,8 @@ export class LogTestComponent implements OnInit {
   testlog(): void {
     this.logService.log('Test the log method', "Paul", "John", 2, 3);
   }
+
+  clearLog(): void {
+    this.logService.clear();
+  }
 }
