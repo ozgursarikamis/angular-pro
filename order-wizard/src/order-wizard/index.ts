@@ -5,6 +5,7 @@ import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 // per file.
 export function orderWizard(_options: any): Rule {
   return (tree: Tree, _context: SchematicContext) => {
+    console.log('_options :>> ', _options);
     return tree;
   };
 }

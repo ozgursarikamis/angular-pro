@@ -3,3 +3,8 @@ ng g @angular/material:material-table --name my-table
 
 Generate a new schema:
   schematics blank --name=order-wizard
+Run schematic:
+  schematics .:order-wizard --name=test
+
+Build schematic in watch mode:
+  npm run build -- -w
