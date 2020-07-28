@@ -1,1 +1,2 @@
 ng g @angular/material:material-dashboard --name my-dash
+ng g @angular/material:material-table --name my-table
