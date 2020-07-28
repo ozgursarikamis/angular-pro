@@ -1,6 +1,7 @@
 import { LogPublisher } from '../log.publisher'
 import { LogEntry } from '../log.entry';
 import { Observable, of } from 'rxjs';
+import { Lexer } from '@angular/compiler';
 
 export class LocalStorage extends LogPublisher {
   constructor() {
@@ -18,6 +19,12 @@ export class LocalStorage extends LogPublisher {
       console.error(error);
     }
     return of(ret);
+  }
+
+  getAll(): Observable<LogEntry[]> {
+    let values: LogEntry[];
+    values = JSON.parse(localStorage.getItem(this.location)) || [];
+    return of(values);
   }
   clear(): Observable<boolean> {
     localStorage.removeItem(this.location);
