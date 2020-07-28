@@ -1,62 +1,23 @@
 import { Injectable } from '@angular/core';
-export class LogEntry {
-  entryDate: Date = new Date();
-  message: string;
-  level: LogLevel = LogLevel.All;
-  extraInfo: any[] = [];
-  logWithDate: boolean = true;
-
-  buildLogString(): string {
-    let ret: string = "";
-    if (this.logWithDate) {
-      ret = `${new Date()} - `;
-    }
-    ret += `Type: ${LogLevel[this.level]}`;
-    ret += ` - Message: ${this.message}`;
-    if (this.extraInfo.length) {
-      ret += ` - Extra Info: ${this.formatParams(this.extraInfo)}`;
-    }
-    return ret;
-  }
-
-  private formatParams(params: any) {
-    let ret: string = params.join(",");
-    if (params.some((p: any) => typeof p == "object")) {
-      ret = "";
-      for (const item in params) {
-        ret += JSON.stringify(item) + ",";
-      }
-    }
-    return ret;
-  }
-
-}
-
-export enum LogLevel {
-  All, Debug, Info, Warn, Error, Fatal, Off
-}
+import { LogLevel } from "./log.level";
+import { LogEntry } from "./log.entry";
+import { LogPublisher } from './log.publisher';
+import { LogPublishersService } from './log.publishers.service';
 
 @Injectable({ providedIn: 'root'})
 export class LogService {
   level: LogLevel = LogLevel.All;
   logWithDate = true;
 
-  constructor() {  }
+  publishers: LogPublisher[];
+
+  constructor(private publisherService: LogPublishersService) {
+    this.publishers = this.publisherService.publisher;
+   }
 
   private shouldLog(level: LogLevel): boolean {
     // this.level = LogLevel.Off;
     return this.level !== LogLevel.Off && level >= this.level;
-  }
-
-  private formatParams(params: any) {
-    let ret: string = params.join(",");
-    if (params.some((p: any) => typeof p == "object")) {
-      ret = "";
-      for (const item in params) {
-        ret += JSON.stringify(item) + ",";
-      }
-    }
-    return ret;
   }
 
   private writeToLog(message: string, level: LogLevel, params: any[]): void {
@@ -68,7 +29,9 @@ export class LogService {
       entry.logWithDate = this.logWithDate;
 
       const value = entry.buildLogString();
-      console.log(value);
+      for (const logger of this.publishers) {
+        logger.log(entry).subscribe(response => console.log);
+      }
     }
   }
 
