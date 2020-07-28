@@ -12,7 +12,7 @@ export class LogService {
   publishers: LogPublisher[];
 
   constructor(private publisherService: LogPublishersService) {
-    this.publishers = this.publisherService.publisher;
+    this.publishers = this.publisherService.publishers;
    }
 
   private shouldLog(level: LogLevel): boolean {
@@ -30,7 +30,7 @@ export class LogService {
 
       const value = entry.buildLogString();
       for (const logger of this.publishers) {
-        logger.log(entry).subscribe(response => console.log);
+        logger.log(entry).subscribe(response => console.log(response));
       }
     }
   }

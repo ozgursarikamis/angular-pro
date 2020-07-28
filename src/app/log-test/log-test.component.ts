@@ -7,14 +7,9 @@ import { LogService } from '../shared/log.service';
   styleUrls: ['./log-test.component.scss']
 })
 export class LogTestComponent implements OnInit {
-
   constructor(private logService: LogService){ }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
   testlog(): void {
-    this.logService.error('Test the log method', "Paul", "John", 2, 3);
+    this.logService.log('Test the log method', "Paul", "John", 2, 3);
   }
-
 }
