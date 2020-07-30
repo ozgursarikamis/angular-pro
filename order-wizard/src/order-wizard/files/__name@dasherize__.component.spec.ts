@@ -7,15 +7,16 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { OrderWizardComponent } from './order-wizard.component';
+import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+import { <%= classify(name) %>Service } from './<% dasherize(name) %>.service';
 
-describe('OrderWizardComponent', () => {
-  let component: OrderWizardComponent;
-  let fixture: ComponentFixture<OrderWizardComponent>;
+describe('<%= classify(name) %>Component', () => {
+  let component: <%= classify(name) %>Component;
+  let fixture: ComponentFixture<<%= classify(name) %>Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrderWizardComponent],
+      declarations: [<%= classify(name) %>Component],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -24,12 +25,13 @@ describe('OrderWizardComponent', () => {
         MatGridListModule,
         MatIconModule,
         MatMenuModule,
-      ]
+      ],
+      providers: [ <%= classify(name) %>Service ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrderWizardComponent);
+    fixture = TestBed.createComponent(<%= classify(name) %>Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

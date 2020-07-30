@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { <%= classify(name) %>Service } from './<%= dasherize(name) %>.service';
 
 @Component({
-  selector: 'app-order-wizard',
-  templateUrl: './order-wizard.component.html',
-  styleUrls: ['./order-wizard.component.scss']
+  selector: 'app-<%= dasherize(name) %>',
+  templateUrl: './<%= dasherize(name) %>.component.html',
+  styleUrls: ['./<%= dasherize(name) %>.component.scss']
 })
-export class OrderWizardComponent {
+export class <%= classify(name) %>Component {
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -29,5 +30,8 @@ export class OrderWizardComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private readonly service: <%= classify(name) %>Service,
+    private breakpointObserver: BreakpointObserver
+    ) {}
 }
