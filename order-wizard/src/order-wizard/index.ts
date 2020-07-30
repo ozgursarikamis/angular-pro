@@ -1,5 +1,5 @@
-import { Rule, SchematicContext, Tree, url, apply, move, mergeWith, MergeStrategy } from '@angular-devkit/schematics';
-import { normalize } from '@angular-devkit/core';
+import { Rule, SchematicContext, Tree, url, apply, move, mergeWith, MergeStrategy, template } from '@angular-devkit/schematics';
+import { normalize, strings } from '@angular-devkit/core';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
@@ -9,7 +9,11 @@ export function orderWizard(_options: any): Rule {
     let files = url('./files');
 
     const newTree = apply(files, [
-      move(folderPath) // rules here.
+      move(folderPath), // rules here.
+      template({
+        ...strings,
+        ..._options
+      })
     ]);
 
     const templateRute = mergeWith(newTree, MergeStrategy.Default);
