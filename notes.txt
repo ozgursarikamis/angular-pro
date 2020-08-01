@@ -8,3 +8,12 @@ Run schematic:
 
 Build schematic in watch mode:
   npm run build -- -w
+
+Link schmatics to access globally on local system:
+  npm link
+
+Add schmatics to the local project:
+  npm link order-wizard
+
+
+ng generate order-wizard:order-wizard --name=checkout
