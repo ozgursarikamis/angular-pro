@@ -16,6 +16,11 @@
       "type": "string",
       "description": "Specifies path to create the order wizard under",
       "default": ""
+    },
+    "project": {
+      "type": "string",
+      "description": "Specifies the project to run the schematics in",
+      "default": "defaultProject"
     }
   },
   "required": [ "name" ]
