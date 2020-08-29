@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.sub = this.service.getPassengers().subscribe(users => {
+    this.sub = this.service.getUsers().subscribe(users => {
       this.users = users;
     });
   }

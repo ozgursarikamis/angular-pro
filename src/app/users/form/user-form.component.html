@@ -7,9 +7,10 @@
   Address Info <br />
   {{ user?.address?.city }} {{ user?.address?.street}}, {{ user?.address?.zipcode}}
 </div>
-
+<br />
+<h2>User Form</h2>
 <form #form="ngForm" novalidate>
-  <div>{{ userToView | json }}</div>
+
   <div>
     Username: <input type="text" name="name" [ngModel]="userToView?.name" />
   </div>
@@ -32,5 +33,14 @@
     </label>
   </div>
 
-  {{ form.value | json }}
+  <div>
+    Manager:
+    <select name="manager" [ngModel]="userList"
+            [value]="0"
+            >
+      <option *ngFor="let _user of userList" [ngValue]="_user?.id">
+        {{ _user.username }} | {{ _user.email }}
+      </option>
+    </select>
+  </div>
 </form>

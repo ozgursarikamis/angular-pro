@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { User } from "../../shared/models/users";
 import { UsersService } from "../users.service";
 
@@ -7,9 +7,10 @@ import { UsersService } from "../users.service";
   styleUrls: ["user-form.component.scss"],
   templateUrl: "user-form.component.html"
 })
-export class UserFormComponent implements OnChanges {
+export class UserFormComponent implements OnChanges, OnInit {
   @Input() user: User;
   userToView: User;
+  userList: User[];
   constructor(private service: UsersService) {
   }
 
@@ -19,5 +20,10 @@ export class UserFormComponent implements OnChanges {
 
   toggleUsername(username: string) {
     console.log(username);
+  }
+
+  ngOnInit(): void {
+    this.service.getUsers()
+      .subscribe(users => this.userList = users.filter(x => x.id > 5));
   }
 }
