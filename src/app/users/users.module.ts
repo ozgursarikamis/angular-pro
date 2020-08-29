@@ -3,16 +3,19 @@ import { CommonModule } from "@angular/common";
 import { UsersService } from "./users.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HttpClientModule } from "@angular/common/http";
+import { UserFormComponent } from "./form/user-form.component";
+
+const components = [
+  DashboardComponent, UserFormComponent
+];
 
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
+  declarations: components,
   imports: [
     CommonModule, HttpClientModule
   ],
   providers: [ UsersService ],
-  exports: [ DashboardComponent ]
+  exports: components
 })
 export class UsersModule {
 }

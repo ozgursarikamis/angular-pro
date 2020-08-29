@@ -2,5 +2,11 @@ Passengers Dashboard Component
 <hr>
 
 <div *ngFor="let user of users">
-  {{ user.name }} - {{ user.email }}
+  <button (click)="userSelected(user)">
+    {{ user.name }} - {{ user.email }}
+  </button>
 </div>
+
+<hr>
+
+<app-user-form [user]="selectedUser"></app-user-form>

@@ -1,0 +1,9 @@
+<div *ngIf="userToView">
+
+  DETAILS FOR <strong>{{ user?.name }}</strong> <br /><br />
+
+  Username: {{ user?.username }}
+
+  Address Info <br />
+  {{ user?.address?.city }} {{ user?.address?.street}}, {{ user?.address?.zipcode}}
+</div>
