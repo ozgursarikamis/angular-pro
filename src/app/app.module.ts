@@ -7,13 +7,15 @@ import { ParentComponent } from "./parent/parent.component";
 import { ChildComponent } from "./child/child.component";
 import { UsersModule } from "./users/users.module";
 import { HomeComponent } from "./home/home.component";
+import { NotFoundComponent } from "./landing-pages/not-found/not-found.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     ParentComponent,
     ChildComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
