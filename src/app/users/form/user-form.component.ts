@@ -16,4 +16,8 @@ export class UserFormComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.userToView = this.user;
   }
+
+  toggleUsername(username: string) {
+    console.log(username);
+  }
 }
