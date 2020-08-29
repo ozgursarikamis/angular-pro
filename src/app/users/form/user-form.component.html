@@ -3,7 +3,7 @@
 <h2>User Form</h2>
 Is Valid: {{ form.valid | json }}
 
-<form #form="ngForm" novalidate>
+<form #form="ngForm" novalidate (ngSubmit)="handleSubmit(form.value, form.value)">
 
   <div>
     Username: <input #userName="ngModel" required type="text" name="name" [ngModel]="userToView?.name" />

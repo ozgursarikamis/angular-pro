@@ -32,4 +32,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.selectedUser = user;
     console.log("selected: ", user);
   }
+
+  onUpdateUser($event: User) {
+    console.log($event);
+  }
 }

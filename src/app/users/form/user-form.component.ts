@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { User } from "../../shared/models/users";
 import { UsersService } from "../users.service";
 
@@ -9,6 +9,7 @@ import { UsersService } from "../users.service";
 })
 export class UserFormComponent implements OnChanges, OnInit {
   @Input() user: User;
+  @Output() update: EventEmitter<User> = new EventEmitter<User>();
   userToView: User;
   userList: User[];
   constructor(private service: UsersService) {
@@ -25,5 +26,11 @@ export class UserFormComponent implements OnChanges, OnInit {
   ngOnInit(): void {
     this.service.getUsers()
       .subscribe(users => this.userList = users.filter(x => x.id > 5));
+  }
+
+  handleSubmit(value: User, isValid: boolean) {
+    if (isValid){
+      this.update.emit(value);
+    }
   }
 }

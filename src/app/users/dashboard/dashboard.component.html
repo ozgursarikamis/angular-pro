@@ -9,4 +9,7 @@ Passengers Dashboard Component
 
 <hr>
 
-<app-user-form [user]="selectedUser"></app-user-form>
+<app-user-form
+  [user]="selectedUser"
+  (update)="onUpdateUser($event)"
+></app-user-form>
