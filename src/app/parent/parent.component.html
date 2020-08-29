@@ -1,4 +1,8 @@
 <p>
   parent works!
 </p>
-<app-child name="Özgür Sarıkamış" (messageBack)=getMessageFromChild($event)></app-child>
+
+
+<button (click)="changeMyName()">Change my name</button>
+
+<app-child [name]="name" (messageBack)=getMessageFromChild($event)></app-child>

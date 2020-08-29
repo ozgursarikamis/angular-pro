@@ -78,7 +78,7 @@
     ],
     "quotemark": [
       true,
-      "single"
+      "double"
     ],
     "semicolon": {
       "options": [
@@ -93,29 +93,29 @@
         "method": "never",
         "named": "never"
       }
-    },
-    "typedef": [
+    },/*    "typedef": [
       true,
       "call-signature"
-    ],
-    "typedef-whitespace": {
-      "options": [
-        {
-          "call-signature": "nospace",
-          "index-signature": "nospace",
-          "parameter": "nospace",
-          "property-declaration": "nospace",
-          "variable-declaration": "nospace"
-        },
-        {
-          "call-signature": "onespace",
-          "index-signature": "onespace",
-          "parameter": "onespace",
-          "property-declaration": "onespace",
-          "variable-declaration": "onespace"
-        }
-      ]
-    },
+    ],*/
+
+//    "typedef-whitespace": {
+//      "options": [
+//        {
+//          "call-signature": "nospace",
+//          "index-signature": "nospace",
+//          "parameter": "nospace",
+//          "property-declaration": "nospace",
+//          "variable-declaration": "nospace"
+//        },
+//        {
+//          "call-signature": "onespace",
+//          "index-signature": "onespace",
+//          "parameter": "onespace",
+//          "property-declaration": "onespace",
+//          "variable-declaration": "onespace"
+//        }
+//      ]
+//    },
     "variable-name": {
       "options": [
         "ban-keywords",
