@@ -4,18 +4,15 @@ import { UsersService } from "./users.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HttpClientModule } from "@angular/common/http";
 import { UserFormComponent } from "./form/user-form.component";
-
-const components = [
-  DashboardComponent, UserFormComponent
-];
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: components,
+  declarations: [ DashboardComponent, UserFormComponent ],
   imports: [
-    CommonModule, HttpClientModule
+    CommonModule, HttpClientModule, FormsModule
   ],
   providers: [ UsersService ],
-  exports: components
+  exports: [ DashboardComponent ]
 })
 export class UsersModule {
 }

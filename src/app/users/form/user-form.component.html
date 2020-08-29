@@ -7,3 +7,12 @@
   Address Info <br />
   {{ user?.address?.city }} {{ user?.address?.street}}, {{ user?.address?.zipcode}}
 </div>
+
+<form #form="ngForm" novalidate>
+  <div>{{ userToView | json }}</div>
+  <div>
+    Username: <input type="text" name="name" [ngModel]="userToView?.name" />
+  </div>
+
+  {{ form.value | json }}
+</form>
