@@ -5,7 +5,7 @@ import { HomeComponent } from "./home/home.component";
 // import { ParentComponent } from "./parent/parent.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent, pathMatch: "full" },
+  { path: "", redirectTo: "users", pathMatch: "full" },
   // { path: "parent", component: ParentComponent },
   // { path: "**", component: NotFoundComponent },
 ];
