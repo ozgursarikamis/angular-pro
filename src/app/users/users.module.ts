@@ -8,15 +8,25 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 
 const routes: Routes = [
-  { path: "users", component: DashboardComponent }
+  {
+    path: "users",
+    children: [
+      { path: "", component: DashboardComponent },
+      { path: ":id", component: UserFormComponent },
+    ]
+  }
 ];
+
 @NgModule({
-  declarations: [ DashboardComponent, UserFormComponent ],
+  declarations: [
+    DashboardComponent,
+    UserFormComponent
+  ],
   imports: [
     CommonModule, HttpClientModule, FormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [ UsersService ],
+  providers: [UsersService],
   // exports: [ DashboardComponent ]
 })
 export class UsersModule {
