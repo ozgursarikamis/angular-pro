@@ -9,13 +9,16 @@
 </div>
 <br />
 <h2>User Form</h2>
+Is Valid: {{ form.valid | json }}
 <form #form="ngForm" novalidate>
 
   <div>
-    Username: <input type="text" name="name" [ngModel]="userToView?.name" />
+    Username: <input #userName="ngModel" required type="text" name="name" [ngModel]="userToView?.name" />
+    {{ userName.errors | json }}
   </div>
   <div>
-    Email: <input type="text" name="email" [ngModel]="userToView?.email" />
+    Email: <input required type="text" #userEmail="ngModel" name="email" [ngModel]="userToView?.email" />
+    {{ userEmail.errors | json }}
   </div>
 
   <div>
