@@ -6,10 +6,12 @@ import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit, OnChanges {
-  ngOnChanges(changes: SimpleChanges): void {
-  }
-
+  constructor() { }
   ngOnInit(): void {
+    console.log("ngOninit");
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
 }
