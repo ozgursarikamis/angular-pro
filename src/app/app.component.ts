@@ -1,17 +1,15 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit, OnChanges {
-  constructor() { }
-  ngOnInit(): void {
-    console.log("ngOninit");
-  }
+export class AppComponent implements OnInit {
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+  constructor() { }
+
+  ngOnInit(): void {
+
   }
 }
