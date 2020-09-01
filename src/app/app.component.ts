@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { User } from "../models/User";
 
 @Component({
   selector: "app-root",
@@ -13,5 +14,13 @@ export class AppComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
+  }
+
+  createUser(user: User) {
+    console.log("Create User Account", user);
+  }
+
+  loginUser(user: User) {
+    console.log("Login", user);
   }
 }
