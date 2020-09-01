@@ -7,6 +7,7 @@ import { User } from "../models/User";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit, OnChanges {
+  rememberMe = false;
   constructor() { }
   ngOnInit(): void {
     console.log("ngOninit");
@@ -17,10 +18,15 @@ export class AppComponent implements OnInit, OnChanges {
   }
 
   createUser(user: User) {
-    console.log("Create User Account", user);
+    console.log("Create User Account", user, this.rememberMe);
   }
 
   loginUser(user: User) {
-    console.log("Login", user);
+    console.log("Login", user, this.rememberMe);
+  }
+
+  rememberUser($event: boolean) {
+    this.rememberMe = $event;
+    console.log("Remember me?", $event);
   }
 }
