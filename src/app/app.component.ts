@@ -1,27 +1,24 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
 })
-export class AppComponent {
-  items = [{
-    name: 'Mark Hoppus',
-    age: 44,
-    location: 'California'
-  },{
-    name: 'Tom Delonge',
-    age: 41,
-    location: 'California'
-  },{
-    name: 'Travis Barker',
-    age: 41,
-    location: 'California'
-  }];
+export class AppComponent implements OnInit {
+  files: File[];
 
-  constructor(){
-    setTimeout(() => {
-      this.items = [...this.items, { name: 'Matt Skiba', age: 40, location: 'California' }];
-    }, 2000);
+  constructor(){ }
+  ngOnInit(): void {
+    this.files = [
+      { name: 'logo.svg', size: 2120109, type: 'image/svg' },
+      { name: 'banner.jpg', size: 18029, type: 'image/jpg' },
+      { name: 'background.png', size: 1784562, type: 'image/png' }
+    ];
   }
+}
+
+interface File {
+  name: string,
+  size: number,
+  type: string
 }

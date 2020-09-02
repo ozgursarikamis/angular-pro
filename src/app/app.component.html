@@ -1,14 +1,9 @@
 <div>
   <ul>
-    <li *myFor="let item of items; let i = index">
-      Member: {{ i }} - {{ item.name | json }}
-    </li>
-
-    <ng-template myFor [myForOf]="items" let-item let-i="index">
-      <li>
-        {{ i }} Member: {{ item.name | json }}
-      </li>
-    </ng-template>
+    <div *ngFor="let file of files">
+      <p>{{ file.name }}</p>
+      <p>{{ file.size | filesize: " GB" }}</p>
+    </div>
   </ul>
 </div>
 <router-outlet></router-outlet>

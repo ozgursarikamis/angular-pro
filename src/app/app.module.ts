@@ -13,6 +13,8 @@ import { CreditCardDirective } from "./directives/credit-card.directive";
 import { TooltipDirective } from './directives/tooltip.directive';
 import { MyForDirective } from './directives/my-for.directive';
 
+import { FileSizePipe } from "./pipes/filesize.pipe";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { MyForDirective } from './directives/my-for.directive';
     ExampleThreeComponent,
     CreditCardDirective,
     TooltipDirective,
-    MyForDirective
+    MyForDirective,
+    FileSizePipe
   ],
   imports: [
     AuthFormModule,
