@@ -9,12 +9,15 @@ import { ExampleOneComponent } from "./example/example-one.component";
 import { ExampleTwoComponent } from "./example/example-two.component";
 import { ExampleThreeComponent } from "./example/example-three.component";
 
+import { CreditCardDirective } from "./directives/credit-card.directive";
+
 @NgModule({
   declarations: [
     AppComponent,
     ExampleOneComponent,
     ExampleTwoComponent,
     ExampleThreeComponent,
+    CreditCardDirective
   ],
   imports: [
     AuthFormModule,
