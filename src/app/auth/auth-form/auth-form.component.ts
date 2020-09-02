@@ -5,7 +5,6 @@ import {
 import { User } from "../../../models/User";
 import { AuthRememberComponent } from "../auth-remember/auth-remember.component";
 import { AuthMessageComponent } from "../auth-message/auth-message.component";
-
 @Component({
   selector: "app-auth-form",
   templateUrl: "auth-form.component.html"
@@ -19,8 +18,10 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   @ViewChildren(AuthMessageComponent) message: QueryList<AuthMessageComponent>;
 
   ngAfterViewInit(): void {
-    console.log('this.email :>> ', this.email);
-
+    console.log('this.email.nativeElement :>> ', this.email.nativeElement);
+    this.email.nativeElement.setAttribute("placeholder", "Enter your email address");
+    this.email.nativeElement.classList.add("email");
+    this.email.nativeElement.focus();
     // ContentChildren is only available here!
     if (this.message) {
       // this.message.forEach((message) => {
