@@ -1,20 +1,14 @@
 <div>
-  <label>Credit Card Number
-    <input type="text" name="credit-card" id="credit-card"
-    placeholder="Enter your 16-digit card number" credit-card>
-  </label>
-   <!-- FIXME: Fix this -->
-  <!-- <label
-        tooltip="3 digits, back of your card"
-        #myTooltip="toolTip">
+  <ul>
+    <li *myFor="let item of items; let i = index">
+      Member: {{ i }} - {{ item.name | json }}
+    </li>
 
-        Enter your security code
-        <span
-          (mouseover)="myTooltip.show()"
-          (mouseout)="myTooltip.hide()">
-          (?)
-        </span>
-        <input type="text">
-      </label> -->
+    <ng-template myFor [myForOf]="items" let-item let-i="index">
+      <li>
+        {{ i }} Member: {{ item.name | json }}
+      </li>
+    </ng-template>
+  </ul>
 </div>
 <router-outlet></router-outlet>
