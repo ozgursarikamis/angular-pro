@@ -7,6 +7,10 @@ import { Component, ViewChild, ViewContainerRef, TemplateRef, AfterViewInit } fr
 })
 export class AppComponent implements AfterViewInit {
 
+  ctx = {
+    $implicit: 'Todd Motto',
+    location: 'England, UK'
+  }
   ngAfterViewInit(): void {
 
   }
