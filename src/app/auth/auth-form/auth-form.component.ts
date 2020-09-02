@@ -1,6 +1,6 @@
 import {
   Component, EventEmitter, Output, ContentChildren, AfterContentInit, QueryList,
-  ViewChild, AfterViewInit, ViewChildren, ChangeDetectorRef
+  ViewChild, AfterViewInit, ViewChildren, ChangeDetectorRef, ElementRef
 } from "@angular/core";
 import { User } from "../../../models/User";
 import { AuthRememberComponent } from "../auth-remember/auth-remember.component";
@@ -14,9 +14,13 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   constructor(private changeDetector: ChangeDetectorRef){ }
 
+  @ViewChild("email") email: ElementRef;
+
   @ViewChildren(AuthMessageComponent) message: QueryList<AuthMessageComponent>;
 
   ngAfterViewInit(): void {
+    console.log('this.email :>> ', this.email);
+
     // ContentChildren is only available here!
     if (this.message) {
       // this.message.forEach((message) => {
