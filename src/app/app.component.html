@@ -1,8 +1,8 @@
 <div>
   <ul>
-    <div *ngFor="let file of files">
+    <div *ngFor="let file of mapped">
       <p>{{ file.name }}</p>
-      <p>{{ file.size | filesize: " GB" }}</p>
+      <p>{{ file.size }}</p>
     </div>
   </ul>
 </div>
