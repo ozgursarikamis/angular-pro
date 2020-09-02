@@ -1,32 +1,25 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterContentInit, AfterViewInit } from "@angular/core";
 import { User } from "../models/User";
+import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit, OnChanges {
-  rememberMe = false;
-  constructor() { }
-  ngOnInit(): void {
-    console.log("ngOninit");
-  }
+export class AppComponent implements AfterViewInit {
+  @ViewChild("entry", { read: ViewContainerRef }) entry: ViewContainerRef;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
+  constructor(
+    private resolver: ComponentFactoryResolver
+  ) { }
 
-  createUser(user: User) {
-    console.log("Create User Account", user, this.rememberMe);
+  ngAfterViewInit(): void {
+    const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
+    const component = this.entry.createComponent(authFormFactory);
   }
 
   loginUser(user: User) {
-    console.log("Login", user, this.rememberMe);
-  }
-
-  rememberUser($event: boolean) {
-    this.rememberMe = $event;
-    console.log("Remember me?", $event);
+    console.log('user :>> ', user);
   }
 }
