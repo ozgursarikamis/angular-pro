@@ -10,6 +10,6 @@ export class AppComponent implements AfterViewInit {
   @ViewChild("tmpl") tmpl: TemplateRef<any>;
 
   ngAfterViewInit(): void {
-    this.entry.createEmbeddedView(this.tmpl);
+    this.entry.createEmbeddedView(this.tmpl, { location: "Manchester, UK" });
   }
 }

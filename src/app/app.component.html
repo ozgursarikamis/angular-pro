@@ -1,7 +1,7 @@
 <div>
   <div #entry></div>
-  <ng-template #tmpl>
-    Özgür Sarıkamış, England, UK
+  <ng-template #tmpl let-name let-location="location">
+    Özgür Sarıkamış, {{ location }}
   </ng-template>
 </div>
 <router-outlet></router-outlet>
