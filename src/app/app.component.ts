@@ -18,7 +18,8 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
-    this.component = this.entry.createComponent(authFormFactory);
+    this.entry.createComponent(authFormFactory);
+    this.component = this.entry.createComponent(authFormFactory, 0);
     this.component.instance.title = "Create Account"; // Overriding component value because no Input decorations allowed in dynamic components
     this.component.instance.submitted.subscribe(this.loginUser); // subscribing output element
   }
