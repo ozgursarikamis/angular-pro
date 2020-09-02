@@ -1,17 +1,10 @@
-import { Component, ViewChild, ViewContainerRef, TemplateRef, AfterViewInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
 
-  ctx = {
-    $implicit: 'Todd Motto',
-    location: 'England, UK'
-  }
-  ngAfterViewInit(): void {
-
-  }
 }

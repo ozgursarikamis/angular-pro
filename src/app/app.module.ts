@@ -5,9 +5,16 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AuthFormModule } from "./auth/auth-form.module";
 import { AppComponent } from "./app.component";
 
+import { ExampleOneComponent } from "./example/example-one.component";
+import { ExampleTwoComponent } from "./example/example-two.component";
+import { ExampleThreeComponent } from "./example/example-three.component";
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ExampleOneComponent,
+    ExampleTwoComponent,
+    ExampleThreeComponent,
   ],
   imports: [
     AuthFormModule,
