@@ -15,7 +15,8 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   @ViewChild(AuthMessageComponent) message: AuthMessageComponent;
 
   ngAfterViewInit(): void {
-    console.log(this.message);
+    // this.message.days = 24; // <-- ExpressionChangedAfterItHasBeenCheckedError
+    // TODO: See ngAfterContentInit below.
   }
 
   @ContentChildren(AuthRememberComponent) remember: QueryList<AuthRememberComponent>;
@@ -25,6 +26,9 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
     this.remember.forEach(item => {
       item.checked.subscribe((x: boolean) => this.showMessage = x);
     });
+    if (this.message) {
+      this.message.days = 24;
+    }
   }
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
