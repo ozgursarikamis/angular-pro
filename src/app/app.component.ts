@@ -28,6 +28,9 @@ export class AppComponent implements AfterViewInit {
     console.log('user :>> ', user);
   }
 
+  moveComponent() {
+    this.entry.move(this.component.hostView, 1);
+  }
   destroyComponent() {
     console.log('this.component :>> ', this.component);
     this.component.destroy();
