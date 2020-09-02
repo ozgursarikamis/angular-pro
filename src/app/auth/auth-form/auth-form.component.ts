@@ -1,6 +1,6 @@
 import {
   Component, EventEmitter, Output, ContentChildren, AfterContentInit, QueryList,
-  ViewChild, AfterViewInit, ViewChildren
+  ViewChild, AfterViewInit, ViewChildren, ChangeDetectorRef
 } from "@angular/core";
 import { User } from "../../../models/User";
 import { AuthRememberComponent } from "../auth-remember/auth-remember.component";
@@ -11,6 +11,8 @@ import { AuthMessageComponent } from "../auth-message/auth-message.component";
   templateUrl: "auth-form.component.html"
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
+
+  constructor(private changeDetector: ChangeDetectorRef){ }
 
   @ViewChildren(AuthMessageComponent) message: QueryList<AuthMessageComponent>;
 
@@ -25,7 +27,8 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
         this.message.forEach(message => {
           message.days = i;
           i++;
-        })
+        });
+        this.changeDetector.detectChanges();
       });
     }
   }
