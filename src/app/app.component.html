@@ -1,7 +1,7 @@
 <div>
-  <button (click)="destroyComponent()">Destroy Component</button>
-  <button (click)="moveComponent()">Move Component</button>
-  <div #entry> <!-- placeholder div for a component -->
-  </div>
+  <div #entry></div>
+  <ng-template #tmpl>
+    Özgür Sarıkamış, England, UK
+  </ng-template>
 </div>
 <router-outlet></router-outlet>
