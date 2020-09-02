@@ -1,7 +1,9 @@
 <div>
-  <div #entry></div>
-  <ng-template #tmpl let-foo let-location="location">
-    {{ foo }}, {{ location }}
+  <ng-container [ngTemplateOutlet]="tmpl">
+  </ng-container>
+
+  <ng-template #tmpl>
+    Özgür, Manchester UK
   </ng-template>
 </div>
 <router-outlet></router-outlet>

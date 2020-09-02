@@ -6,10 +6,8 @@ import { Component, ViewChild, ViewContainerRef, TemplateRef, AfterViewInit } fr
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild("entry", { read: ViewContainerRef }) entry: ViewContainerRef;
-  @ViewChild("tmpl") tmpl: TemplateRef<any>;
 
   ngAfterViewInit(): void {
-    this.entry.createEmbeddedView(this.tmpl, { $implicit: "Özgür", location: "Manchester, UK" });
+
   }
 }
