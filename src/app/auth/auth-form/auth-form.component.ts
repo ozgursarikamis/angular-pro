@@ -1,6 +1,6 @@
 import {
   Component, EventEmitter, Output, ContentChildren, AfterContentInit, QueryList,
-  ViewChild, AfterViewInit
+  ViewChild, AfterViewInit, ViewChildren
 } from "@angular/core";
 import { User } from "../../../models/User";
 import { AuthRememberComponent } from "../auth-remember/auth-remember.component";
@@ -12,11 +12,22 @@ import { AuthMessageComponent } from "../auth-message/auth-message.component";
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
-  @ViewChild(AuthMessageComponent) message: AuthMessageComponent;
+  @ViewChildren(AuthMessageComponent) message: QueryList<AuthMessageComponent>;
 
   ngAfterViewInit(): void {
-    // this.message.days = 24; // <-- ExpressionChangedAfterItHasBeenCheckedError
-    // TODO: See ngAfterContentInit below.
+    // ContentChildren is only available here!
+    if (this.message) {
+      // this.message.forEach((message) => {
+      //   message.days = 30; // <-- ExpressionChangedAfterItHasBeenCheckedError
+      // });
+      setTimeout(() => {
+        let i = 27;
+        this.message.forEach(message => {
+          message.days = i;
+          i++;
+        })
+      });
+    }
   }
 
   @ContentChildren(AuthRememberComponent) remember: QueryList<AuthRememberComponent>;
@@ -26,9 +37,9 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
     this.remember.forEach(item => {
       item.checked.subscribe((x: boolean) => this.showMessage = x);
     });
-    if (this.message) {
-      this.message.days = 24;
-    }
+    // if (this.message) {
+    //   this.message.days = 24;
+    // }
   }
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
