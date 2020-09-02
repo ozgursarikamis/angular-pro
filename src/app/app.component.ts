@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterContentInit, AfterViewInit } from "@angular/core";
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver, AfterViewInit, ComponentRef } from "@angular/core";
 import { User } from "../models/User";
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 
@@ -8,6 +8,8 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements AfterViewInit {
+  component: ComponentRef<AuthFormComponent>;
+
   @ViewChild("entry", { read: ViewContainerRef }) entry: ViewContainerRef;
 
   constructor(
@@ -16,14 +18,17 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
-    const component = this.entry.createComponent(authFormFactory);
-
-    component.instance.title = "Create Account"; // Overriding component value because no Input decorations allowed in dynamic components
-
-    component.instance.submitted.subscribe(this.loginUser); // subscribing output element
+    this.component = this.entry.createComponent(authFormFactory);
+    this.component.instance.title = "Create Account"; // Overriding component value because no Input decorations allowed in dynamic components
+    this.component.instance.submitted.subscribe(this.loginUser); // subscribing output element
   }
 
   loginUser(user: User) {
     console.log('user :>> ', user);
+  }
+
+  destroyComponent() {
+    console.log('this.component :>> ', this.component);
+    this.component.destroy();
   }
 }
