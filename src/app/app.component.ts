@@ -19,6 +19,8 @@ export class AppComponent implements AfterViewInit {
     const component = this.entry.createComponent(authFormFactory);
 
     component.instance.title = "Create Account"; // Overriding component value because no Input decorations allowed in dynamic components
+
+    component.instance.submitted.subscribe(this.loginUser); // subscribing output element
   }
 
   loginUser(user: User) {
