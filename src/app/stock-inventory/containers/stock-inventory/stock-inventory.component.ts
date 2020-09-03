@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Product } from '../../models/product';
 @Component({
   selector: 'app-stock-inventory',
@@ -16,22 +16,22 @@ export class StockInventoryComponent implements OnInit {
     { id: 5, price: 600, name: "Apple Watch" },
   ];
 
-  form = new FormGroup({
-    store: new FormGroup({
-      branch: new FormControl(),
-      code: new FormControl()
+  form = this.builder.group({
+    store: this.builder.group({
+      branch: '',
+      code: ''
     }),
     selector: this.createStock({}),
-    stock: new FormArray([
+    stock: this.builder.array([
       this.createStock({ product_id: 1, quantity: 10 }),
       this.createStock({ product_id: 3, quantity: 50 }),
     ])
   });
 
   createStock(stock) {
-    return new FormGroup({
-      product_id: new FormControl(parseInt(stock.product_id, 10) || '' ),
-      quantity: new FormControl(stock.quantity || 10)
+    return this.builder.group({
+      product_id: parseInt(stock.product_id, 10) || '',
+      quantity: stock.quantity || 10
     });
   }
 
@@ -46,7 +46,7 @@ export class StockInventoryComponent implements OnInit {
     control.removeAt(index);
   }
 
-  constructor() { }
+  constructor(private builder: FormBuilder) { }
 
   ngOnInit(): void {
   }
