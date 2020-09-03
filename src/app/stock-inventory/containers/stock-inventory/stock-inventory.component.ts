@@ -34,6 +34,12 @@ export class StockInventoryComponent implements OnInit {
       quantity: new FormControl(stock.quantity || 10)
     });
   }
+
+  addStock(stock) {
+    const control = this.form.get('stock') as FormArray;
+    control.push(this.createStock(stock));
+  }
+
   constructor() { }
 
   ngOnInit(): void {

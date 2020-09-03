@@ -3,7 +3,7 @@
 
    <app-stock-branch [parent]="form"></app-stock-branch>
 
-   <app-stock-selector [products]="products" [parent]="form"></app-stock-selector>
+   <app-stock-selector (added)="addStock($event)" [products]="products" [parent]="form"></app-stock-selector>
 
    <app-stock-products [parent]="form"></app-stock-products>
 

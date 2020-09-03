@@ -13,6 +13,7 @@ export class StockProductsComponent implements OnInit {
   get stocks(): AbstractControl[] {
     return (this.parent.get('stock') as FormArray).controls;
   }
+
   constructor() { }
 
   ngOnInit(): void { }
