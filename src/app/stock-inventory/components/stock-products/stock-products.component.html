@@ -3,14 +3,17 @@
     <div *ngFor="let item of stocks; let i = index;">
       <div class="stock-product__content" [formGroupName]="i">
         <div class="stock-product__name">
-          {{ item.value.product_id }}
+          {{ getProduct(item.value.product_id)?.name }}
+        </div>
+        <div class="stock-product__price">
+          {{ getProduct(item.value.product_id)?.price | currency:"USD":true }}
         </div>
         <input type="number" step="10" min="10" max="1000"
           formControlName="quantity">
 
           <button (click)="onRemove(item, i)" type="button">Remove</button>
-
       </div>
     </div>
   </div>
 </div>
+<!-- {{ "2500" | currency: "TRY": true }} -->

@@ -48,14 +48,12 @@ export class StockInventoryComponent implements OnInit {
 
     forkJoin(cart, products).subscribe(
       ([cart, products]) => {
-        console.log('cart', cart);
-        console.log('products', products);
+        const myMap = products
+          .map<[number, Product]>(product => [product.id, product]);
 
-        const myMap = products.map<[number, Product]>(product => [product.id, product]);
         this.productMap = new Map<number, Product>(myMap);
         this.products = products;
       }
-      // x => console.log('x', x)
     );
   }
 
