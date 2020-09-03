@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Product, Item } from '../../models/product';
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, VirtualTimeScheduler } from 'rxjs';
 import { StockInventoryService } from '../../services/stock-inventory.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { StockInventoryService } from '../../services/stock-inventory.service';
 })
 export class StockInventoryComponent implements OnInit {
   products: Product[];
+  productMap: Map<number, Product>;
 
   form = this.builder.group({
     store: this.builder.group({
@@ -45,7 +46,17 @@ export class StockInventoryComponent implements OnInit {
     const cart = this.service.getCartItems();
     const products = this.service.getProducts();
 
-    forkJoin(cart, products).subscribe(x => console.log('x', x));
+    forkJoin(cart, products).subscribe(
+      ([cart, products]) => {
+        console.log('cart', cart);
+        console.log('products', products);
+
+        const myMap = products.map<[number, Product]>(product => [product.id, product]);
+        this.productMap = new Map<number, Product>(myMap);
+        this.products = products;
+      }
+      // x => console.log('x', x)
+    );
   }
 
   onSubmit() {
