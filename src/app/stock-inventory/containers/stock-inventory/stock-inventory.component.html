@@ -5,7 +5,9 @@
 
    <app-stock-selector (added)="addStock($event)" [products]="products" [parent]="form"></app-stock-selector>
 
+   <div>Total: {{ total }}</div>
    <app-stock-products (removed)="removeStock($event)" [map]="productMap" [parent]="form"></app-stock-products>
+   <div>Total: {{ total }}</div>
 
     <div class="stock-inventory__button">
       <button [disabled]="form.invalid" type="submit">Order Stock</button>
