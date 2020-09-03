@@ -10,9 +10,14 @@ export class StockInventoryComponent implements OnInit {
 
   form = new FormGroup({
     store: new FormGroup({
-      branch: new FormControl('1234'),
-      code: new FormControl('5678')
-    })
+      branch: new FormControl(),
+      code: new FormControl()
+    }),
+    selector: new FormGroup({
+      product_id: new FormControl(''),
+      quantity: new FormControl(10)
+    }),
+    stock: new FormArray([])
   });
 
   constructor() { }

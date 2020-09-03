@@ -1,9 +1,11 @@
 <div class="stock-inventory">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div formGroupName="store">
-      <input type="text" formControlName="branch" placeholder="Branch ID"> <br>
-      <input type="text" formControlName="code" placeholder="Manager Code">
-    </div>
+
+   <app-stock-branch></app-stock-branch>
+
+   <app-stock-selector></app-stock-selector>
+
+   <app-stock-products></app-stock-products>
 
     <div class="stock-inventory__button">
       <button [disabled]="form.invalid" type="submit">Order Stock</button>
