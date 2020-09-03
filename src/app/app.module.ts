@@ -15,6 +15,8 @@ import { MyForDirective } from './directives/my-for.directive';
 
 import { FileSizePipe } from "./pipes/filesize.pipe";
 
+import { StockInventoryModule } from "./stock-inventory/stock-inventory.module";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { FileSizePipe } from "./pipes/filesize.pipe";
   imports: [
     AuthFormModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StockInventoryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
