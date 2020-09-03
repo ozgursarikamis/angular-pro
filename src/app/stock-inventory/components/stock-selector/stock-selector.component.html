@@ -1,3 +1,14 @@
 <div class="stock-selector" [formGroup]="parent">
+  <div formGroupName="selector"> <!-- stock-inventory.component, FromGroup named as selector  -->
+    <select formControlName="product_id">
+      <option value="">Select stock...</option>
+      <option *ngFor="let product of products" [value]="product.id">{{ product.name }} </option>
+    </select>
+    <br />
+    <input formControlName="quantity" type="number"
+      step="10" min="10" max="1000"
+    placeholder="Select quantity..." />
 
+    <button type="button">Add Stock</button>
+  </div>
 </div>
