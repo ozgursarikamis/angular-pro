@@ -1,9 +1,9 @@
 <div [formGroup]="parent">
   <div formGroupName="store">
     <input type="text" formControlName="branch" placeholder="Branch ID"> <br>
-    <div class="error" *ngIf="parent.get('store.branch').hasError('invalidBranch') && parent.get('store.branch').touched">
-     Invalid branch code: 1 letter, 3 Numbers
-    </div>
+    <div class="error" *ngIf="invalid">Invalid branch code: 1 letter, 3 Numbers</div>
+    <div class="error" *ngIf="required('branch')">Branch ID is required</div>
+
     <input type="text" formControlName="code" placeholder="Store Code">
     <div class="error" *ngIf="required('code')">
       Store Code is required
