@@ -1,11 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const COUNTER_VALUE_ACCESSOR = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => StockCounterComponent),
+  multi: true
+};
 
 @Component({
   selector: 'app-stock-counter',
+  providers: [COUNTER_VALUE_ACCESSOR],
   templateUrl: './stock-counter.component.html',
   styleUrls: ['./stock-counter.component.scss']
 })
-export class StockCounterComponent implements OnInit {
+export class StockCounterComponent implements OnInit, ControlValueAccessor {
 
   @Input() step: number = 10;
   @Input() min: number = 10;
@@ -24,7 +32,11 @@ export class StockCounterComponent implements OnInit {
       this.value = this.value - this.step;
     }
   }
+
   constructor() { }
 
-  ngOnInit(): void { }
+  writeValue(obj: any): void { }
+  registerOnChange(fn: any): void { }
+  registerOnTouched(fn: any): void { }
+  setDisabledState?(isDisabled: boolean): void { }
 }
