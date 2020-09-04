@@ -15,6 +15,23 @@ const COUNTER_VALUE_ACCESSOR = {
 })
 export class StockCounterComponent implements OnInit, ControlValueAccessor {
 
+  private onTouch: Function;
+  private onModelChange: Function;
+
+  writeValue(value: any): void {
+    this.value = value
+  }
+
+  registerOnChange(fn: any): void { // on counter changes:
+    this.onModelChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void { }
+
   @Input() step: number = 10;
   @Input() min: number = 10;
   @Input() max: number = 1000;
@@ -24,19 +41,19 @@ export class StockCounterComponent implements OnInit, ControlValueAccessor {
   increment() {
     if (this.value < this.max) {
       this.value = this.value + this.step;
+      this.onModelChange(this.value);
     }
+    this.onTouch(); // notifying that the control has changed.
   }
 
   decrement() {
     if (this.value > this.min) {
       this.value = this.value - this.step;
+      this.onModelChange(this.value);
     }
+    this.onTouch();
   }
 
   constructor() { }
-
-  writeValue(obj: any): void { }
-  registerOnChange(fn: any): void { }
-  registerOnTouched(fn: any): void { }
-  setDisabledState?(isDisabled: boolean): void { }
+  ngOnInit(): void { }
 }

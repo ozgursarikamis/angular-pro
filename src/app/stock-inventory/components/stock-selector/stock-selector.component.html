@@ -5,11 +5,14 @@
       <option *ngFor="let product of products" [value]="product.id">{{ product.name }} </option>
     </select>
     <br />
-    <input formControlName="quantity" type="number"
+    <!-- <input formControlName="quantity" type="number"
       step="10" min="10" max="1000"
-    placeholder="Select quantity..." />
+    placeholder="Select quantity..." /> -->
 
-    <app-stock-counter [step]="10" [min]="10" [max]="1000"></app-stock-counter>
+    <app-stock-counter
+      formControlName="quantity"
+      [step]="10" [min]="10" [max]="1000">
+    </app-stock-counter>
 
     <button (click)="onAdd()" type="button">Add Stock</button>
   </div>
