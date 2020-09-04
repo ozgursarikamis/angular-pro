@@ -14,9 +14,8 @@ export class StockSelectorComponent implements OnInit {
   @Output() added = new EventEmitter<any>();
   onAdd() {
     this.added.emit(this.parent.get('selector').value);
-    this.parent.get("selector").reset({
+    this.parent.get("selector").patchValue({
       product_id: '',
-      quantity: 10
     });
   }
   constructor() { }
