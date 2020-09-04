@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { Product, Item } from '../../models/product';
-import { Observable, forkJoin, VirtualTimeScheduler } from 'rxjs';
-import { StockInventoryService } from '../../services/stock-inventory.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, FormArray } from "@angular/forms";
+import { Product, Item } from "../../models/product";
+import { Observable, forkJoin, VirtualTimeScheduler } from "rxjs";
+import { StockInventoryService } from "../../services/stock-inventory.service";
 
 @Component({
-  selector: 'app-stock-inventory',
-  styleUrls: ['stock-inventory.component.scss'],
-  templateUrl: './stock-inventory.component.html'
+  selector: "app-stock-inventory",
+  styleUrls: ["stock-inventory.component.scss"],
+  templateUrl: "./stock-inventory.component.html"
 })
 export class StockInventoryComponent implements OnInit {
   products: Product[];
@@ -16,8 +16,8 @@ export class StockInventoryComponent implements OnInit {
 
   form = this.builder.group({
     store: this.builder.group({
-      branch: '',
-      code: ''
+      branch: "",
+      code: ""
     }),
     selector: this.createStock({}),
     stock: this.builder.array([])
@@ -25,19 +25,19 @@ export class StockInventoryComponent implements OnInit {
 
   createStock(stock) {
     return this.builder.group({
-      product_id: parseInt(stock.product_id, 10) || '',
+      product_id: parseInt(stock.product_id, 10) || "",
       quantity: stock.quantity || 10
     });
   }
 
   addStock(stock) {
-    const control = this.form.get('stock') as FormArray;
+    const control = this.form.get("stock") as FormArray;
     control.push(this.createStock(stock));
   }
 
   removeStock({ group, index }: { group: FormGroup, index: number }) {
     // console.log(group, index);
-    const control = this.form.get('stock') as FormArray;
+    const control = this.form.get("stock") as FormArray;
     control.removeAt(index);
   }
 
@@ -56,7 +56,7 @@ export class StockInventoryComponent implements OnInit {
         this.products = products;
         cart.forEach(item => this.addStock(item));
 
-        this.form.get('stock').valueChanges
+        this.form.get("stock").valueChanges
           .subscribe(value => this.calculateTotal(value));
       }
     );
@@ -71,6 +71,6 @@ export class StockInventoryComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Submit: ', this.form.value);
+    console.log("Submit: ", this.form.value);
   }
 }
