@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormArray, Validators } from "@angular/forms";
 import { Product, Item } from "../../models/product";
 import { forkJoin } from "rxjs";
 import { StockInventoryService } from "../../services/stock-inventory.service";
+import { StockValidators } from "./stock-inventory.validators";
 
 @Component({
   selector: "app-stock-inventory",
@@ -16,7 +17,8 @@ export class StockInventoryComponent implements OnInit {
 
   form = this.builder.group({
     store: this.builder.group({
-      branch: ['', Validators.required],
+                  //2nd arg: sync validators, 3rd args: async validators
+      branch: ['', [ Validators.required, StockValidators.checkBranch ]],
       code: ['', Validators.required],
     }),
     selector: this.createStock({}),
