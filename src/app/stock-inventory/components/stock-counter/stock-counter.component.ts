@@ -17,6 +17,7 @@ export class StockCounterComponent implements OnInit, ControlValueAccessor {
 
   private onTouch: Function;
   private onModelChange: Function;
+  focus: boolean;
 
   writeValue(value: any): void {
     this.value = value
@@ -38,8 +39,18 @@ export class StockCounterComponent implements OnInit, ControlValueAccessor {
 
   value: number = 10;
 
-  onFocus(event: FocusEvent) { }
-  onBlur(event: FocusEvent) { }
+  onFocus(event: FocusEvent) {
+    this.focus = true;
+    event.preventDefault();
+    event.stopPropagation();
+    this.onTouch();
+  }
+  onBlur(event: FocusEvent) {
+    this.focus = false;
+    event.preventDefault();
+    event.stopPropagation();
+    this.onTouch();
+  }
 
   onKeyDown(event: KeyboardEvent) {
     const handlers = {

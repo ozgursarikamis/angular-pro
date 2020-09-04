@@ -1,6 +1,7 @@
-<div class="stock-counter">
+<div class="stock-counter" [class.focused]="focus">
   <div>
     <div
+      tabindex="0"
       (keydown)="onKeyDown($event)"
       (blur)="onBlur($event)"
       (focus)="onFocus($event)"
