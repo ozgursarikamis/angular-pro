@@ -1,6 +1,10 @@
 <div class="stock-counter">
   <div>
-    <div>
+    <div
+      (keydown)="onKeyDown($event)"
+      (blur)="onBlur($event)"
+      (focus)="onFocus($event)"
+    >
       <p>{{ value }}</p>
       <div>
         <button type="button"

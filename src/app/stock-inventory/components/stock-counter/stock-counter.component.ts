@@ -36,7 +36,25 @@ export class StockCounterComponent implements OnInit, ControlValueAccessor {
   @Input() min: number = 10;
   @Input() max: number = 1000;
 
-  value: number = 0;
+  value: number = 10;
+
+  onFocus(event: FocusEvent) { }
+  onBlur(event: FocusEvent) { }
+
+  onKeyDown(event: KeyboardEvent) {
+    const handlers = {
+      ArrowDown: () => this.decrement(),
+      ArrowUp: () => this.increment()
+    };
+
+    if (handlers[event.code]) {
+      handlers[event.code]();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    this.onTouch();
+  }
 
   increment() {
     if (this.value < this.max) {
