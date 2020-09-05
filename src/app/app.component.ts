@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
         filter(event => event instanceof NavigationEnd)
       )
       .subscribe(event => {
-        console.log('event', event);
+        // console.log('event', event);
       });
   }
 }

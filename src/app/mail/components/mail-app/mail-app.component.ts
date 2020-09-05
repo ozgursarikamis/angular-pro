@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MailAppComponent implements OnInit {
 
+  onActivate($event) {
+    console.log('Activate $event', $event);
+  }
+
+  onDeactivate($event) {
+    console.log('Deactivate $event', $event);
+  }
+
   constructor() { }
 
   ngOnInit(): void {
