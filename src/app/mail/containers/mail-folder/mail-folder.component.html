@@ -1,3 +1,7 @@
 <h2>Inbox</h2>
-<app-mail-item *ngFor="let message of messages" [message]="message">
-</app-mail-item>
+<!-- <app-mail-item *ngFor="let message of messages" [message]="message"></app-mail-item> -->
+<!-- <p>{{ data | json }}</p> -->
+
+<app-mail-item *ngFor="let message of (data | async).messages"
+  [message]="message"
+></app-mail-item>

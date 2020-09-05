@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mail } from '../../models/mail.interface';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-mail-folder',
@@ -8,15 +10,10 @@ import { Mail } from '../../models/mail.interface';
 })
 export class MailFolderComponent implements OnInit {
 
-  constructor() { }
+  // data: Observable<{ messages: Mail[] }> = this.route.data;
+  data = this.route.data;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void { }
-
-  messages: Mail[] = [{
-    "id": 1,
-    "folder": "inbox",
-    "from": "Jane Smith",
-    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis, neque at ultricies fringilla, ligula metus",
-    "timestamp": 1487848162905
-  }];
 }

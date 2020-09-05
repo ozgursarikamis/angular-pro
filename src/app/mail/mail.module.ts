@@ -6,8 +6,17 @@ import { MailFolderComponent } from './containers/mail-folder/mail-folder.compon
 import { MailItemComponent } from './components/mail-item/mail-item.component';
 import { MailAppComponent } from './components/mail-app/mail-app.component';
 
+import { MailService } from "./mail.service";
+import { MailFolderResolve } from "../mail/containers/mail-folder/mail.folder-resolve";
+
 export const ROUTES: Routes = [
-  { path: 'folder/:name', component: MailFolderComponent }
+  {
+    path: 'folder/:name',
+    component: MailFolderComponent,
+    resolve: {
+      messages: MailFolderResolve
+    }
+  }
 ];
 
 @NgModule({
@@ -20,8 +29,10 @@ export const ROUTES: Routes = [
     MailAppComponent,
     MailItemComponent
   ],
+  providers: [MailService, MailFolderResolve],
   exports: [
     MailAppComponent
   ]
 })
-export class MailModule {}
+export class MailModule { }
+
