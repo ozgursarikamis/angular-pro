@@ -8,3 +8,8 @@ export interface Item {
   product_id: number;
   quantity: number;
 }
+
+export interface Branch {
+  id: string;
+  name: string;
+}

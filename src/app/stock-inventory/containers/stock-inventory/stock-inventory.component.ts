@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, FormArray, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, FormArray, Validators, AbstractControl } from "@angular/forms";
 import { Product, Item } from "../../models/product";
 import { forkJoin } from "rxjs";
 import { StockInventoryService } from "../../services/stock-inventory.service";
@@ -18,7 +18,7 @@ export class StockInventoryComponent implements OnInit {
   form = this.builder.group({
     store: this.builder.group({
                   //2nd arg: sync validators, 3rd args: async validators
-      branch: ['', [ Validators.required, StockValidators.checkBranch ]],
+      branch: ['', [ Validators.required, StockValidators.checkBranch ], [this.validataBranch.bind(this)]],
       code: ['', Validators.required],
     }),
     selector: this.createStock({}),
@@ -26,6 +26,11 @@ export class StockInventoryComponent implements OnInit {
   }, {
     validators: StockValidators.checkStockExists
   });
+
+  validataBranch(control: AbstractControl) {
+    const branchIsValid = this.service.checkBranchId(control.value);
+    return branchIsValid;
+  }
 
   createStock(stock) {
     return this.builder.group({

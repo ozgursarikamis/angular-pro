@@ -13,6 +13,8 @@ export class StockValidators {
     const stockItem = control.get('stock');
     const selector = control.get('selector');
 
+    // console.log({stockItem, selector});
+
     if (!(stockItem && selector)) {
       return null;
     }
