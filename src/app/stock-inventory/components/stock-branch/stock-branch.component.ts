@@ -13,13 +13,18 @@ export class StockBranchComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  get unknown() {
+    return (
+      this.parent.get('store.branch').hasError('unknownBranch') &&
+      this.parent.get('store.branch').dirty
+    );
+  }
 
   get invalid() {
     return this.parent.get('store.branch').hasError('invalidBranch')
       && this.parent.get('store.branch').dirty
       && !this.required('branch');
   }
-
 
   required(name: string) {
     return (
