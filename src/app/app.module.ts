@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MailModule } from './mail/mail.module';
-
 import { AppComponent } from './app.component';
 
 export const ROUTES: Routes = [
@@ -20,7 +19,7 @@ export const ROUTES: Routes = [
     RouterModule,
     HttpClientModule,
     MailModule,
-    RouterModule.forRoot(ROUTES, { enableTracing: true })
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]
