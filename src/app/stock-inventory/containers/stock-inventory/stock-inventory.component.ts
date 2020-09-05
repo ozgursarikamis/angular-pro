@@ -23,6 +23,8 @@ export class StockInventoryComponent implements OnInit {
     }),
     selector: this.createStock({}),
     stock: this.builder.array([])
+  }, {
+    validators: StockValidators.checkStockExists
   });
 
   createStock(stock) {

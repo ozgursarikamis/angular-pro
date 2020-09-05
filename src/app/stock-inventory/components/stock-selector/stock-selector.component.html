@@ -14,6 +14,11 @@
       [step]="10" [min]="10" [max]="1000">
     </app-stock-counter>
 
-    <button (click)="onAdd()" type="button">Add Stock</button>
+    <button (click)="onAdd()" [disabled]="stockExists || notSelected" type="button">Add Stock</button>
+
+    <div *ngIf="stockExists" class="stock-selector__error">
+      Item already exists in the stock
+    </div>
+
   </div>
 </div>
