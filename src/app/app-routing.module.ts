@@ -1,16 +1,20 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-// import { NotFoundComponent } from "./landing-pages/not-found/not-found.component";
-// import { ParentComponent } from "./parent/parent.component";
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleDetailComponent } from './articles/article-detail/article-detail.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
-  // { path: "parent", component: ParentComponent },
-  // { path: "**", component: NotFoundComponent },
+  {
+    path: 'articles', component: ArticlesComponent,
+    children: [
+      { path: ':id', component: ArticleDetailComponent }
+    ]
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
