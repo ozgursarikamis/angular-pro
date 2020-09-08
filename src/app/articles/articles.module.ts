@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticlesComponent } from './articles.component';
+import { ArticleListComponent } from "../articles/article-list/article-list.component";
 import { ArticleDetailComponent } from "./article-detail/article-detail.component";
 import { RouterModule } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   declarations: [
-    ArticlesComponent,
+    ArticleListComponent,
     ArticleDetailComponent
   ]
 })
