@@ -1,16 +1,22 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-// import { NotFoundComponent } from "./landing-pages/not-found/not-found.component";
-// import { ParentComponent } from "./parent/parent.component";
+import { HomeComponent } from './users/home.component';
+import { UsersComponent } from './users/users.component';
+
+import { UserResolverService } from "./resolvers/user-resolver.service";
 
 const routes: Routes = [
-  { path: "", redirectTo: "/", pathMatch: "full" },
-  // { path: "parent", component: ParentComponent },
-  // { path: "**", component: NotFoundComponent },
+  { path: 'home', pathMatch: 'full', component: HomeComponent },
+  { path: 'users', component: UsersComponent,
+      resolve: { routeResolver: UserResolverService }
+  },
+  {
+    path: '**', redirectTo: '/', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
