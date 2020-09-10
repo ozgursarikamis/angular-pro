@@ -23,4 +23,32 @@ describe('FileSizePipe', () => {
       expect(pipe.transform(987654321, 'anotherExt')).toBe('941.90anotherExt');
     });
   });
+  describe('Shallow FileSizePipe test', () => {
+
+    @Component({
+      template: `
+        Size: {{ size | filesize:suffix }}
+      `
+    })
+    class TestComponent {
+      suffix;
+      size = 123456789;
+    }
+
+    let component: TestComponent;
+    let fixture: ComponentFixture<TestComponent>;
+    let el: HTMLElement;
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          FileSizePipe,
+          TestComponent
+        ]
+      });
+      fixture = TestBed.createComponent(TestComponent);
+      component = fixture.componentInstance;
+      el = fixture.nativeElement;
+    });
+  });
 });
