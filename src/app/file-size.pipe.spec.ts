@@ -56,6 +56,9 @@ describe('FileSizePipe', () => {
     it('should convert bytes to megabytes', () => {
       fixture.detectChanges();
       expect(el.textContent).toContain('Size: 117.74MB');
+      component.size = 1029281;
+      fixture.detectChanges();
+      expect(el.textContent).toContain('Size: 0.98MB');
     });
   });
 });
