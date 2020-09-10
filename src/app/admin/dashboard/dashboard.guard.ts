@@ -6,9 +6,9 @@ export class DashboardGuard implements CanActivate {
 
   constructor() { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    alert('private property');
+    // alert('private property');
     console.log('route :>> ', route);
     console.log('state :>> ', state);
-    return false;
+    return true;
   }
 }
