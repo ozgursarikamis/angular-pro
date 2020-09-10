@@ -64,5 +64,11 @@ describe('FileSizePipe', () => {
       expect(el.textContent).toContain('Size: 117.74MB');
     });
 
+    it('should override the extension when supplied', () => {
+      component.suffix = 'myExt';
+      fixture.detectChanges();
+      expect(el.textContent).toContain('Size: 117.74myExt');
+    });
+
   });
 });
