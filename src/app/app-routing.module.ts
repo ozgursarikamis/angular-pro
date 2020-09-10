@@ -1,16 +1,17 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-// import { NotFoundComponent } from "./landing-pages/not-found/not-found.component";
-// import { ParentComponent } from "./parent/parent.component";
+import { AdminRoutingModule } from "./admin/admin.routing.module";
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
-  // { path: "parent", component: ParentComponent },
-  // { path: "**", component: NotFoundComponent },
+  {
+    path: "admin",
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes), AdminRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
