@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from "@angular/common/
 import { Product } from '../models/product';
 import { of } from 'rxjs';
 
-fdescribe('StockInventoryService', () => {
+describe('StockInventoryService', () => {
 
   let service: StockInventoryService;
   let httpMock: HttpTestingController;
