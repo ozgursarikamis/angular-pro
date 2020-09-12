@@ -48,11 +48,9 @@ fdescribe('StockInventoryService', () => {
     req.flush(dummyProduct);
   });
 
-  it('should fetch single product', () => {
-
-  });
-
   afterEach(() => {
+    // we add afterEach(), a method in which we run http.verify() and test our
+    // assertion mock like http, basically it ensures that no request is outstanding.
     httpMock.verify();
   });
 });
