@@ -15,7 +15,7 @@ export class StockInventoryService {
     return this.http.get<Product[]>(`${url}/products`);
   }
 
-  getProduct(id: number) {
+  getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(`${url}/products/${id}`);
   }
 
