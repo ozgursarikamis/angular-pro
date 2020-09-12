@@ -54,4 +54,13 @@ fdescribe('StockCounterComponent', () => {
     expect(component.value).toBe(100);
   });
 
+  it('should not increment above the maximum value', () => {
+    component.step = 20;
+    component.max = 20;
+    component.increment();
+    component.increment();
+
+    expect(component.value).toBe(20);
+  });
+
 });
