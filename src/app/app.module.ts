@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { UserSettingsFormComponent } from './user-settings-form/user-settings-form.component';
 
+import { DataService } from "./data/data.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,7 @@ import { UserSettingsFormComponent } from './user-settings-form/user-settings-fo
 	AppRoutingModule,
 	FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
