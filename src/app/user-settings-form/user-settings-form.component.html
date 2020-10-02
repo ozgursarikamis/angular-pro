@@ -1,4 +1,6 @@
 {{ form.value | json }}
+<br />
+{{ userSettings | json }}
 
 <div class="container">
 	<h2>User Settings</h2>
@@ -18,19 +20,19 @@
 		<h5>User Interface Style</h5>
 
 		<div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios" id="lightInterface" value="light" checked>
+			<input class="form-check-input" type="radio" name="interfaceStyle" id="lightInterface" value="light" [(ngModel)]="userSettings.interfaceStyle">
 			<label class="form-check-label" for="lightInterface">
 			  Light
 			</label>
 		  </div>
 		  <div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios" id="mediumInterface" value="medium">
+			<input class="form-check-input" type="radio" name="interfaceStyle" id="mediumInterface" value="medium" [(ngModel)]="userSettings.interfaceStyle">
 			<label class="form-check-label" for="mediumInterface">
 			  Medium
 			</label>
 		  </div>
 		  <div class="form-check">
-			<input class="form-check-input" type="radio" name="exampleRadios" id="darkInterface" value="dark" disabled>
+			<input class="form-check-input" type="radio" name="interfaceStyle" id="darkInterface" value="dark" [(ngModel)]="userSettings.interfaceStyle">
 			<label class="form-check-label" for="darkInterface">
 			  Dark
 			</label>
@@ -38,7 +40,7 @@
 
 		  <div class="form-group">
 			<label for="subscriptionType">Subscription Type</label>
-			<select class="form-control" id="subscriptionType">
+			<select class="form-control" name="subscriptionType" id="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
 			  <option>Monthly</option>
 			  <option>Annual</option>
 			  <option>Lifetime</option>
@@ -47,7 +49,7 @@
 
 		  <div class="form-group">
 			  <label for="notes">Notes</label>
-			  <textarea id="notes" name="notes" class="form-control" rows="3"></textarea>
+			  <textarea [(ngModel)]="userSettings.notes" id="notes" name="notes" class="form-control" rows="3"></textarea>
 		  </div>
 
 		  <div class="form-group">
