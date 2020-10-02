@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { DataService } from '../data/data.service';
 import { UserSettings } from "../data/user-settings";
 
@@ -22,9 +23,12 @@ export class UserSettingsFormComponent implements OnInit {
 	postErrorMessage: string;
 
 	userSettings: UserSettings = { ...this.originalUserSettings };
+	subsTypes: Observable<{ id: string, type: string }[]>;
+
 	constructor(private service: DataService) { }
 
 	ngOnInit(): void {
+		this.subsTypes = this.service.getSubsTypes();
 	}
 
 	onSubmit(form: NgForm) {
