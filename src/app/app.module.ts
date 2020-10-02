@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { UserSettingsFormComponent } from './user-settings-form/user-settings-form.component';
 
 import { DataService } from "./data/data.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DataService } from "./data/data.service";
   imports: [
     BrowserModule,
 	AppRoutingModule,
-	FormsModule
+	FormsModule,
+	HttpClientModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
