@@ -12,6 +12,6 @@ export class DataService {
 
   postUserSettingsForm(userSettings: UserSettings): Observable<any> {
 	//   return of(userSettings);
-	return this.http.post('https://5f51071d5e98480016123523.mockapi.io/userSettings', userSettings);
+	return this.http.post('https://5f51071d5e98480016123523[ERROR].mockapi.io/userSettings', userSettings);
   }
 }

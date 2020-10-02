@@ -69,6 +69,10 @@
 			<input class="form-control" type="date" name="testing" id="testing">
 		</div>
 
+		<div [hidden]="!postError" class="alert alert-danger">
+			{{ postErrorMessage }}
+		</div>
+
 		<button class="btn btn-primary">Send</button>
 		
 	</form>
