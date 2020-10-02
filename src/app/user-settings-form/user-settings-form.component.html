@@ -5,7 +5,7 @@
 	<form #form="ngForm">
 		<div class="form-group">
 			<label for="name">Name</label>
-			<input ngModel id="name" name="name" class="form-control" placeholder="Name" />
+			<input [(ngModel)]="userSettings.name" id="name" name="name" class="form-control" placeholder="Name" />
 		</div>
 
 		<div class="form-check">
