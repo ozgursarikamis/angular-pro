@@ -22,6 +22,7 @@ export class UserSettingsFormComponent implements OnInit {
 	postError: boolean;
 	postErrorMessage: string;
 	singleModel = "On";
+	startDate: Date;
 
 	userSettings: UserSettings = { ...this.originalUserSettings };
 	subsTypes: Observable<{ id: string, type: string }[]>;
@@ -30,6 +31,7 @@ export class UserSettingsFormComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.subsTypes = this.service.getSubsTypes();
+		this.startDate = new Date();
 	}
 
 	onSubmit(form: NgForm) {

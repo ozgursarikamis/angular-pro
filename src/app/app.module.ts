@@ -9,6 +9,8 @@ import { UserSettingsFormComponent } from './user-settings-form/user-settings-fo
 import { DataService } from "./data/data.service";
 import { HttpClientModule } from "@angular/common/http";
 import { ButtonsModule } from "ngx-bootstrap/buttons";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ButtonsModule } from "ngx-bootstrap/buttons";
 	AppRoutingModule,
 	FormsModule,
 	HttpClientModule,
-	ButtonsModule
+	ButtonsModule,
+	BsDatepickerModule.forRoot(),
+	BrowserAnimationsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
