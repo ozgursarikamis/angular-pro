@@ -6,6 +6,16 @@
 	<h2>User Settings</h2>
 	<form #form="ngForm" (ngSubmit)="onSubmit(form)">
 		<div class="form-group">
+			<div class="btn-group">
+				<label name="interfaceStyle"  class="btn btn-primary" [(ngModel)]="userSettings.interfaceStyle"
+					   btnRadio="Light" tabindex="0" role="button">Dark</label>
+				<label name="interfaceStyle"  class="btn btn-secondary" [(ngModel)]="userSettings.interfaceStyle"
+					   btnRadio="Medium" tabindex="0" role="button">Medium</label>
+				<label name="interfaceStyle"  class="btn btn-warning" [(ngModel)]="userSettings.interfaceStyle"
+					   btnRadio="Dark" tabindex="0" role="button">Dark</label>
+			  </div>
+		</div>
+		<div class="form-group">
 			<label for="name">Name</label>
 			<input [(ngModel)]="userSettings.name" id="name" name="name" 
 			required #nameField="ngModel"
@@ -15,6 +25,11 @@
 			<div [hidden]="!form.submitted || nameField.valid" class="alert alert-danger">
 				Enter a name
 			</div>
+			<button type="button" class="btn btn-primary" name="singleModel"
+				[(ngModel)]="singleModel" btnCheckbox
+				btnCheckboxTrue="On" btnCheckboxFalse="Off">
+					{{ singleModel }}
+			</button>
 		</div>
 
 		<div class="form-check">
@@ -26,7 +41,7 @@
 		
 		<h5>User Interface Style</h5>
 
-		<div class="form-check">
+		<!-- <div class="form-check">
 			<input class="form-check-input" type="radio" name="interfaceStyle" id="lightInterface" value="light" [(ngModel)]="userSettings.interfaceStyle">
 			<label class="form-check-label" for="lightInterface">
 			  Light
@@ -43,7 +58,7 @@
 			<label class="form-check-label" for="darkInterface">
 			  Dark
 			</label>
-		  </div>
+		  </div> -->
 
 		  <div class="form-group">
 			<label for="subscriptionType">Subscription Type</label>

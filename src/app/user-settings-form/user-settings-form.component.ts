@@ -21,6 +21,7 @@ export class UserSettingsFormComponent implements OnInit {
 
 	postError: boolean;
 	postErrorMessage: string;
+	singleModel = "On";
 
 	userSettings: UserSettings = { ...this.originalUserSettings };
 	subsTypes: Observable<{ id: string, type: string }[]>;
@@ -32,16 +33,7 @@ export class UserSettingsFormComponent implements OnInit {
 	}
 
 	onSubmit(form: NgForm) {
-		console.log('in onSubmit: ', form.valid);
-		if (form.valid) {			
-			this.service.postUserSettingsForm(this.userSettings).subscribe(
-				result => console.log('success:', result),
-				error => this.onHttpError(error)
-			);
-		} else {
-			this.postError = true;
-			this.postErrorMessage = "Please fix the above errors";
-		}
+		console.log('in onSubmit: ', form.value); 
 	}
 
 	onHttpError(errorResponse: any) {

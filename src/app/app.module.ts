@@ -8,6 +8,7 @@ import { UserSettingsFormComponent } from './user-settings-form/user-settings-fo
 
 import { DataService } from "./data/data.service";
 import { HttpClientModule } from "@angular/common/http";
+import { ButtonsModule } from "ngx-bootstrap/buttons";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
 	AppRoutingModule,
 	FormsModule,
-	HttpClientModule
+	HttpClientModule,
+	ButtonsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
