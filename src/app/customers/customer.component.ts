@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Customer } from "./customer";
@@ -27,6 +28,12 @@ function emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
 export class CustomerComponent implements OnInit {
 	customerForm: FormGroup;
 	customer = new Customer();
+	emailMessage: string;
+
+	private validationMessages = {
+		required: "Please enter your email address",
+		email: "Please enter a valid email address"
+	};
 
 	constructor(private formBuilder: FormBuilder) { }
 
@@ -43,6 +50,24 @@ export class CustomerComponent implements OnInit {
 			rating: ['', ratingRange(1,3)],
 			sendCatalog: true
 		});
+
+		this.customerForm.get('notification').valueChanges.subscribe(value => {
+				this.setNotification(value);
+			}
+		);
+
+		const emailControl = this.customerForm.get('emailGroup.email')
+		emailControl.valueChanges.subscribe(value => {
+			console.log('value :>> ', value);
+			this.setMessage(emailControl);
+		});
+	}
+	setMessage(control: AbstractControl) : void {
+		this.emailMessage = '';
+		if ((control.touched || control.dirty) && control.errors) {
+			const keys = Object.keys(control.errors);
+			this.emailMessage = keys.map(key => this.validationMessages[key]).join(' ');
+		}
 	}
 
 	populateTestData() {
