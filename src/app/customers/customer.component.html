@@ -58,7 +58,7 @@
 						 placeholder="Email (required)"
 						 required
 						 email
-						 name="email"
+						 formControlName="email"
 						 [ngClass]="{'is-invalid': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid }" />
 				  <span class="invalid-feedback">
 					<span *ngIf="customerForm.get('email').errors?.required">
@@ -189,6 +189,7 @@
 						  [disabled]="!customerForm.valid">
 					Save
 				  </button>
+				  <button (click)="populateTestData()" class="btn btn-outline-secondary">Test Data</button>
 				</div>
 			  </div>
 		</form>	
