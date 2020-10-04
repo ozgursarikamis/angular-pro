@@ -1,7 +1,7 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Customer } from "./customer";
+import { debounceTime } from "rxjs/operators";
 
 function ratingRange(min: number, max: number): ValidatorFn {
 	return (c: AbstractControl): { [key: string]: boolean } | null => {
@@ -57,7 +57,7 @@ export class CustomerComponent implements OnInit {
 		);
 
 		const emailControl = this.customerForm.get('emailGroup.email')
-		emailControl.valueChanges.subscribe(value => {
+		emailControl.valueChanges.pipe(debounceTime(1000)).subscribe(value => {
 			console.log('value :>> ', value);
 			this.setMessage(emailControl);
 		});
