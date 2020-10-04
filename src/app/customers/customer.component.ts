@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Customer } from "./customer";
 import { debounceTime } from "rxjs/operators";
 
@@ -29,9 +29,13 @@ export class CustomerComponent implements OnInit {
 	customerForm: FormGroup;
 	customer = new Customer();
 	emailMessage: string;
-
-	getAddresses(): FormArray {
+	
+	get addresses(): FormArray {
 		return <FormArray>this.customerForm.get('addresses');
+	}
+
+	addAddresses(): void {
+		this.addresses.push(this.buildAddress());
 	}
 
 	private validationMessages = {
