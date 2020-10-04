@@ -25,7 +25,10 @@ export class CustomerComponent implements OnInit {
 		this.customerForm = this.formBuilder.group({
 			firstName: ['', [Validators.required, Validators.minLength(3)]],
 			lastName: ['', [Validators.required, Validators.minLength(50)]],
-			email: ['', [Validators.required, Validators.email]],
+			emailGroup: this.formBuilder.group({
+				email: ['', [Validators.required, Validators.email]],
+				confirmEmail: ['', [Validators.required, Validators.email]],
+			}),
 			phone: '',
 			notification: 'email',
 			rating: ['', ratingRange(1,3)],
