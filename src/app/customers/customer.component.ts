@@ -19,6 +19,7 @@ export class CustomerComponent implements OnInit {
 			lastName: new FormControl(),
 			email: new FormControl(),
 			sendCatalog: new FormControl(true),
+			zip: new FormControl()
 		});
 	 }
 
