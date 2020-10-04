@@ -30,9 +30,9 @@ export class CustomerComponent implements OnInit {
 	customer = new Customer();
 	emailMessage: string;
 
-	// getAddresses(): FormArray {
-	// 	return <FormArray>this.customerForm.get('addresses');
-	// }
+	getAddresses(): FormArray {
+		return <FormArray>this.customerForm.get('addresses');
+	}
 
 	private validationMessages = {
 		required: "Please enter your email address",
@@ -53,14 +53,14 @@ export class CustomerComponent implements OnInit {
 			notification: 'email',
 			rating: ['', ratingRange(1,3)],
 			sendCatalog: false,
-			addresses: this.buildAddress()
+			addresses: this.formBuilder.array([this.buildAddress()])
 		});
 
 		this.customerForm.get('notification').valueChanges.subscribe(value => {
 				this.setNotification(value);
 			}
 		);
-		
+
 		const emailControl = this.customerForm.get('emailGroup.email')
 		emailControl.valueChanges.pipe(debounceTime(1000)).subscribe(value => {
 			console.log('value :>> ', value);
