@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { BlueBackgroundDirective } from './shared/blue-background.directive';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,9 @@ import { ChildComponent } from './child/child.component';
     ChildComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
