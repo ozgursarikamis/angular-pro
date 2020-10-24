@@ -1,3 +1,16 @@
-<h1>Welcome to Users App</h1>
-<app-parent></app-parent>
+<h2>Built-in Pipes</h2>
+
+<p> {{ "10.10.1985" | date }} </p>
+<p>	{{ "TEST CASE" | lowercase }} </p>
+<p>	{{ "test case" | uppercase }} </p>
+
+<p>	{{ "10000" | currency }} </p>
+<p>	{{ "10000" | currency: "TRY" }} </p>
+<p>	{{ "10000" | currency: "₺" }} </p>
+<p> {{ "1.3495" | currency:'CAD':'code' }}</p>
+
+<p> {{ "1.3495" | percent }}</p>
+<p> {{ "0.259" | percent }}</p>
+<p> {{ "0.259" | percent:'4.3-5' }}</p>
+
 <router-outlet></router-outlet>
