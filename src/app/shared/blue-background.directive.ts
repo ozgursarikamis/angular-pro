@@ -1,13 +1,33 @@
-import { Directive, ElementRef } from "@angular/core";
+import { stringify } from '@angular/compiler/src/util';
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: "[appBlueBackground]"
+  selector: '[appBlueBackground]',
 })
 export class BlueBackgroundDirective {
 
-  constructor(elementRef: ElementRef) {
-	  elementRef.nativeElement.style.backgroundColor = "blue";
-	  elementRef.nativeElement.style.color = "wheat";
-	  elementRef.nativeElement.style.padding = "1.5rem";
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    this.elementRef.nativeElement.style.backgroundColor = 'blue';
+    this.elementRef.nativeElement.style.color = 'wheat';
+    this.elementRef.nativeElement.style.padding = '1.5rem';
+  }
+
+  @HostListener('mouseover')
+  onMouseOver() {
+    this.ChangeBgColor('red');
+  }
+
+  @HostListener('click')
+  onClick() {
+	  window.alert("Host Element Clicked");
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+	  this.ChangeBgColor('black');
+  }
+
+  ChangeBgColor(color: string) {
+    this.renderer.setStyle(this.elementRef.nativeElement, 'color', color);
   }
 }
