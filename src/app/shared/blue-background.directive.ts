@@ -1,5 +1,5 @@
 import { stringify } from '@angular/compiler/src/util';
-import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appBlueBackground]',
@@ -12,10 +12,10 @@ export class BlueBackgroundDirective {
     this.elementRef.nativeElement.style.padding = '1.5rem';
   }
 
-  @HostListener('mouseover')
-  onMouseOver() {
-    this.ChangeBgColor('red');
-  }
+//   @HostListener('mouseover')
+//   onMouseOver() {
+//     this.ChangeBgColor('red');
+//   }
 
   @HostListener('click')
   onClick() {
@@ -29,5 +29,12 @@ export class BlueBackgroundDirective {
 
   ChangeBgColor(color: string) {
     this.renderer.setStyle(this.elementRef.nativeElement, 'color', color);
+  }
+
+  @HostBinding('style.border') border: string;
+
+  @HostListener('mouseover') 
+  onMouseOver2() {
+	  this.border = '5px solid red';
   }
 }
