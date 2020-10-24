@@ -12,6 +12,13 @@ export class ParentComponent implements AfterViewInit {
 
 	constructor() { }
 
+	data: any;
+	getDataReceiver($event: any) {
+		this.data = $event;
+		console.log('this.data :>> ', this.data);
+		console.log('$event :>> ', $event);
+	}
+
 	ngAfterViewInit(): void { // child component properties is read here: AfterViewInit
 		this.username = this.child.username;
 		console.log('this.username :>> ', this.username);
