@@ -3,10 +3,12 @@ import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { BlueBackgroundDirective } from './shared/blue-background.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BlueBackgroundDirective
   ],
   imports: [
     BrowserModule,
