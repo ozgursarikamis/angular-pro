@@ -1,5 +1,6 @@
 import { ProductsService } from './services/products.service';
 import { Component, OnInit } from "@angular/core";
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: "app-root",
@@ -8,7 +9,26 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private service: ProductsService) { }
+  constructor(
+	  private service: ProductsService,
+	  private router: Router 
+	  ) { 
+		  // detecting route changes:
+		this.router.events.subscribe(event => {
+            if (event instanceof NavigationStart) {
+                // Show loading indicator and perform an action
+            }
+
+            if (event instanceof NavigationEnd) {
+                // Hide loading indicator and perform an action
+            }
+
+            if (event instanceof NavigationEnd) {
+                // Hide loading indicator and perform an action
+                console.log(event); // It logs an error for debugging
+            }
+        });
+	  }
 
   ngOnInit(): void {
 	  this.service.getProducts().subscribe(response => {
