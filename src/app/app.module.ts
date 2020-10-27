@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -7,18 +8,21 @@ import { BlueBackgroundDirective } from './shared/blue-background.directive';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { RouterModule } from '@angular/router';
+import { ParameterizedPipe } from './shared/parameterized.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BlueBackgroundDirective,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    ParameterizedPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    RouterModule
+	RouterModule,
+	HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

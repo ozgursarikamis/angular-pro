@@ -13,4 +13,6 @@
 <p> {{ "0.259" | percent }}</p>
 <p> {{ "0.259" | percent:'4.3-5' }}</p>
 
+<p>{{ "test parameterized pipe" | parameterized: ["arg1","arg2"] }}</p>
+
 <router-outlet></router-outlet>
