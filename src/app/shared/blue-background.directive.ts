@@ -17,7 +17,7 @@ export class BlueBackgroundDirective {
 //     this.ChangeBgColor('red');
 //   }
 
-  @HostListener('click')
+  @HostListener('click') // method decorator
   onClick() {
 	  window.alert("Host Element Clicked");
   }
@@ -31,9 +31,9 @@ export class BlueBackgroundDirective {
     this.renderer.setStyle(this.elementRef.nativeElement, 'color', color);
   }
 
-  @HostBinding('style.border') border: string;
+  @HostBinding('style.border') border: string; // property decorator
 
-  @HostListener('mouseover') 
+  @HostListener('mouseover') // method decorator
   onMouseOver2() {
 	  this.border = '5px solid red';
   }

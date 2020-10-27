@@ -1,3 +1,4 @@
+import { ProductsService } from './services/products.service';
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AppComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ProductsService) { }
 
   ngOnInit(): void {
-
+	  this.service.getProducts().subscribe(response => {
+		  console.log('response :>> ', response);
+	  });
   }
+}
+
+if (typeof Worker !== 'undefined') {
+  // Create a new
+  const worker = new Worker('./app.worker', { type: 'module' });
+  worker.onmessage = ({ data }) => {
+    console.log(`page got message: ${data}`);
+  };
+  worker.postMessage('hello');
+} else {
+  // Web Workers are not supported in this environment.
+  // You should add a fallback so that your program still executes correctly.
 }
